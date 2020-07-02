@@ -1,8 +1,8 @@
-# (KINDA DONE) check if json exists, if it doesnt, create a file for users water drinking records
+# (DONE) check if json exists, if it doesnt, create a file for users water drinking records
 
 # (DONE) greet the user with random fact about water
 
-# (KINDA DONE) ask the user for name (as in log-in) (list already known users)
+# ask the user for name so they can "log in" (list already known users)
 
 # if the json exists then count number of days when the user drank water
 # and tell them that so far they have drank enough water for X days
@@ -30,10 +30,7 @@ def finddatabase(filename):
 if finddatabase("water.json"):
     print("Existing water data found!")
 else:
-    print("Water data not found, creating database!")
-
-
-
+    print("Water data not found, will create database!")
 
 randomfacts = ["Hey! Did you know that water is very interesting?", "You might have not known it, but water is like "
                                                                     "really really wet!",
