@@ -1,13 +1,13 @@
 # check if json exists, if it doesnt, create a file for users water drinking records
 
-# greet the user with random fact about water
+# (DONE) greet the user with random fact about water
 
-# ask the user for name (as in log-in) (list already known users)
+# (KINDA DONE) ask the user for name (as in log-in) (list already known users)
 
 # if the json exists then count number of days when the user drank water
 # and tell them that so far they have drank enough water for X days
 
-# ask for input if user has drunk enough water today
+# (DONE) ask for input if user has drunk enough water today
 
 # if yes ask for volume and write yes and volume into json
 
@@ -36,7 +36,10 @@ no = ["N", "n", "no", "nope"]
 
 if drankwatertoday in yes:
     print("Good on You, " + username)
+    watervolume = input("And how much water in mililitres did you drink?")
 elif drankwatertoday in no:
     print("Not Good, " + username)
 else:
     print("Only Y/N answers please.")
+
+print("Okay, " + username + ". Today you have drunk " + watervolume + " ml of water.")
