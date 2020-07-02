@@ -9,7 +9,7 @@
 
 # (DONE) ask for input if user has drunk enough water today
 
-# if yes ask for volume and write yes and volume into json
+# (KINDA, not for JSON) if yes ask for volume and write yes and volume into json
 
 # if no remind them it is important to drink enough water and write no into json
 
@@ -17,17 +17,17 @@
 
 # (DONE) rewrite for while true loop
 
+# allow for the user to stop the script when they fail to answer yes/no
+
 import random
 
-randomfacts = ["Hey! Did you know that water is very interesting?", "You might have not known it, but water is like"
+randomfacts = ["Hey! Did you know that water is very interesting?", "You might have not known it, but water is like "
                                                                     "really really wet!",
                "In case you missed the memo, water is not a solid substance!", "There are rumours there is water "
                                                                                "even on Mars! Think about that!",
                "Even fish drink water daily!"]
 
 chosenfact = random.choice(randomfacts)
-
-
 
 yes = ["Y", "y", "yes"]
 no = ["N", "n", "no", "nope"]
@@ -47,4 +47,6 @@ while True:
         continue
     else:
         print("Only Y/N answers please.")
-        continue
+        break
+
+print('You have quit the program.')
