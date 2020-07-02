@@ -15,6 +15,8 @@
 
 # return to input with quote that this is the next day
 
+# (DONE) rewrite for while true loop
+
 import random
 
 randomfacts = ["Hey! Did you know that water is very interesting?", "You might have not known it, but water is like"
@@ -25,21 +27,24 @@ randomfacts = ["Hey! Did you know that water is very interesting?", "You might h
 
 chosenfact = random.choice(randomfacts)
 
-print("Fun Fact about Water of the Day! " + chosenfact)
 
-username = input("What is your name?")
-
-drankwatertoday = input("Hello, " + username + "." + "Did you drink enough water today? Y/N")
 
 yes = ["Y", "y", "yes"]
 no = ["N", "n", "no", "nope"]
 
-if drankwatertoday in yes:
-    print("Good on You, " + username)
-    watervolume = input("And how much water in mililitres did you drink?")
-elif drankwatertoday in no:
-    print("Not Good, " + username)
-else:
-    print("Only Y/N answers please.")
+while True:
+    print("Fun Fact about Water of the Day! " + chosenfact)
+    username = input("What is your name?")
+    drankwatertoday = input("Hello, " + username + "." + "Did you drink enough water today? Y/N")
 
-print("Okay, " + username + ". Today you have drunk " + watervolume + " ml of water.")
+    if drankwatertoday in yes:
+        print("Good on You, " + username)
+        watervolume = input("And how much water in mililitres did you drink?")
+        print("Okay, " + username + ". Today you have drunk " + watervolume + " ml of water.")
+        continue
+    elif drankwatertoday in no:
+        print("Not Good, " + username)
+        continue
+    else:
+        print("Only Y/N answers please.")
+        continue
