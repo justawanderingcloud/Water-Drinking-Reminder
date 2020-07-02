@@ -41,9 +41,8 @@ randomfacts = ["Hey! Did you know that water is very interesting?", "You might h
                                                                                "even on Mars! Think about that!",
                "Even fish drink water daily!"]
 
-
-
 yes = ["Y", "y", "yes"]
+
 no = ["N", "n", "no", "nope"]
 
 while True:
@@ -70,7 +69,7 @@ while True:
         waterdata = {"name": username,
                      "waterdrunk": watervolume}
 
-            # THIS SOLUTION DOES NOT ADD TO THE VALUE DRUNK, BUT OVERRIDES THE KEY
+            # THIS SOLUTION DOES NOT ADD TO THE VALUE DRUNK, BUT OVERRIDES THE VALUE OF A KEY
 
         with open('water.json', 'w') as outfile:
             json.dump(waterdata, outfile)
