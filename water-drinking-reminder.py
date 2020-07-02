@@ -19,6 +19,9 @@
 
 # allow for the user to stop the script when they fail to answer yes/no
 
+# THERE NEEDS TO BE A DAY = 1 OR SOMETHING AND IN THE NEXT ITERATION IT SETS TO DAY+1 OR SOMETHING LIKE THAT
+# WITH NEW OPEN IT READS LAST DAY OPENED FOR THAT USER AND AUTOMATICALLY SETS FOR DAY+1
+
 import random
 import json
 import os
