@@ -70,6 +70,8 @@ while True:
         waterdata = {"name": username,
                      "waterdrunk": watervolume}
 
+            # THIS SOLUTION DOES NOT ADD TO THE VALUE DRUNK, BUT OVERRIDES THE KEY
+
         with open('water.json', 'w') as outfile:
             json.dump(waterdata, outfile)
         continue
