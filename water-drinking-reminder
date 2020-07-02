@@ -41,12 +41,14 @@ randomfacts = ["Hey! Did you know that water is very interesting?", "You might h
                                                                                "even on Mars! Think about that!",
                "Even fish drink water daily!"]
 
-chosenfact = random.choice(randomfacts)
+
 
 yes = ["Y", "y", "yes"]
 no = ["N", "n", "no", "nope"]
 
 while True:
+    chosenfact = random.choice(randomfacts)
+
     print("Fun Fact about Water of the Day! " + chosenfact)
 
     username = input("What is your name?")
