@@ -1,8 +1,10 @@
+# REQUIRES JSON STRUCTURE FIX. IF MORE USERS ARE PRESENT, PROGRAM CRASHES
+
 # (DONE) check if json exists, if it doesnt, create a file for users water drinking records
 
 # (DONE) greet the user with random fact about water
 
-# ask the user for name so they can "log in" (list already known users)
+# (DONE, NEEDS BUGFIX) ask the user for name so they can "log in" (list already known users)
 
 # if the json exists then count number of days when the user drank water
 # and tell them that so far they have drank enough water for X days
@@ -26,6 +28,7 @@ import random
 import json
 import os
 
+
 def finddatabase(filename):
     return os.path.exists(filename)
 
@@ -34,6 +37,10 @@ if finddatabase("water.json"):
     print("Existing water data found!")
 else:
     print("Water data not found, will create database!")
+    with open("water.json", "w") as outfile:
+        testsequence = {"name": "test",
+                        "waterdrunk": "0"}
+        json.dump(testsequence, outfile)
 
 randomfacts = ["Hey! Did you know that water is very interesting?", "You might have not known it, but water is like "
                                                                     "really really wet!",
@@ -51,14 +58,20 @@ while True:
     print("Fun Fact about Water of the Day! " + chosenfact)
 
     username = input("What is your name?")
+    with open("water.json", "r") as checkifknown:
+        usernamecheck = json.load(checkifknown)
+        if username in usernamecheck["name"]:
+            print("Welcome Back, " + username + ". So far you have drunk *VALUE* of water since using this tracker.")
+        else:
+            print("Hello,", username)
+
+    drankwatertoday = input("Did you drink enough water today? Y/N")
+
     # check if username exists in json file.
-        # if exists then welcome back and tell them how much they have drunk water in how many days
-            # most consecutive days water drunk?
-            # NEEDS A WAY TO ADD NEW DAYS INTO JSON SO IT IS TRACKABLE
-        # if it doesnt then greet user for the first time
-
-    drankwatertoday = input("Hello, " + username + "." + "Did you drink enough water today? Y/N")
-
+    # if exists then welcome back and tell them how much they have drunk water in how many days
+    # most consecutive days water drunk?
+    # NEEDS A WAY TO ADD NEW DAYS INTO JSON SO IT IS TRACKABLE
+    # if it doesnt then greet user for the first time
 
     if drankwatertoday in yes:
         print("Good on You, " + username)
@@ -69,15 +82,22 @@ while True:
         waterdata = {"name": username,
                      "waterdrunk": watervolume}
 
-            # THIS SOLUTION DOES NOT ADD TO THE VALUE DRUNK, BUT OVERRIDES THE VALUE OF A KEY
+        ### IF KEY USERNAME IN OUTFILE THEN ADD TO EXISTING VALUE
+        ### MAYBE GET VALUE FROM WATERVOLUME_PREVIOUS AND ADD WATERVOLUME
+        ### THEN JSON.DUMP
+        ### ELSE JSON.DUMP
 
-        with open('water.json', 'w') as outfile:
+        # THIS SOLUTION DOES NOT ADD TO THE VALUE DRUNK, BUT OVERRIDES THE VALUE OF A KEY
+
+        with open("water.json", "a") as outfile:
             json.dump(waterdata, outfile)
         continue
 
     elif drankwatertoday in no:
         print("Not Good, " + username)
-        # write zero ml water drunk to json
+
+        ### IF KEY USERNAME IN OUTFILE THEN PASS
+        ### ELSE JSON.DUMP WATERDATA = "0"
         continue
     else:
         print("Only Y/N answers please.")
