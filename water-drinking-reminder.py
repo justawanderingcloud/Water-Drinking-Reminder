@@ -1,4 +1,4 @@
-# REQUIRES JSON STRUCTURE FIX. IF MORE USERS ARE PRESENT, PROGRAM CRASHES
+# MANY KNOWN ISSUES RIGHT NOW
 
 # (DONE) check if json exists, if it doesnt, create a file for users water drinking records
 
@@ -33,14 +33,10 @@ def finddatabase(filename):
     return os.path.exists(filename)
 
 
-if finddatabase("water.json"):
+if finddatabase("water-test-data.json.json"):
     print("Existing water data found!")
 else:
     print("Water data not found, will create database!")
-    with open("water.json", "w") as outfile:
-        testsequence = {"name": "test",
-                        "waterdrunk": "0"}
-        json.dump(testsequence, outfile)
 
 randomfacts = ["Hey! Did you know that water is very interesting?", "You might have not known it, but water is like "
                                                                     "really really wet!",
@@ -58,9 +54,9 @@ while True:
     print("Fun Fact about Water of the Day! " + chosenfact)
 
     username = input("What is your name?")
-    with open("water.json", "r") as checkifknown:
+    with open("water-test-data.json", "r") as checkifknown:
         usernamecheck = json.load(checkifknown)
-        if username in usernamecheck["name"]:
+        if username in usernamecheck.keys():
             print("Welcome Back, " + username + ". So far you have drunk *VALUE* of water since using this tracker.")
         else:
             print("Hello,", username)
@@ -79,13 +75,14 @@ while True:
         watervolume = input("And how much water in mililitres did you drink today?")
         print("Okay, " + username + ". Today you have drunk " + watervolume + " ml of water.")
 
-        waterdata = {"name": username,
-                     "waterdrunk": watervolume}
+        # waterdata = {"name": username, "waterdrunk": watervolume}
+        # no way, this requires major rework, else it overrides everything and doesnt
+        # work as intended. Bad structure
 
         ### IF KEY USERNAME IN OUTFILE THEN ADD TO EXISTING VALUE
         ### MAYBE GET VALUE FROM WATERVOLUME_PREVIOUS AND ADD WATERVOLUME
         ### THEN JSON.DUMP
-        ### ELSE JSON.DUMP
+        ### ELSE JSON.DUMP but what?
 
         # THIS SOLUTION DOES NOT ADD TO THE VALUE DRUNK, BUT OVERRIDES THE VALUE OF A KEY
 
